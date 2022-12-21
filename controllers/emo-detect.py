@@ -8,6 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 import sys
 import joblib
+from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
 
 
 
@@ -103,6 +104,13 @@ for text in texts:
     features = vectorizer.transform(features)
     prediction = clf.predict(features)[0]
     print( text,emoji_dict[prediction])
+
+print(accuracy_score(y_test, clf.predict(X_test)))
+print(recall_score(y_test, clf.predict(X_test), average='macro'))
+print(precision_score(y_test, clf.predict(X_test), average='macro'))
+print(f1_score(y_test, clf.predict(X_test), average='macro'))
+
+
 
 # filename = 'finalized_model2.sav'
 # joblib.dump(clf, filename)

@@ -8,6 +8,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.pipeline import Pipeline
 import sys
 import joblib
+from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
 
 
 df = pd.read_csv("emotion-dataset.csv")
@@ -32,11 +33,13 @@ X_train, X_test, y_train, y_test = train_test_split(Xfeatures,ylabels, test_size
 
 pipe_lr.fit(X_train,y_train)
 
+print(pipe_lr.score(X_test,y_test))
+print(recall_score(y_test, pipe_lr.predict(X_test), average='macro'))
+print(precision_score(y_test, pipe_lr.predict(X_test), average='macro'))
+print(f1_score(y_test, pipe_lr.predict(X_test), average='macro'))
 
-
-
-filename = 'finalized_model.sav'
-joblib.dump(pipe_lr, filename)
+# filename = 'finalized_model.sav'
+# joblib.dump(pipe_lr, filename)
 
 
 # val=sys.argv[1]
