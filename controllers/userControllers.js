@@ -10,7 +10,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   try{
 
-  
+    console.log("hello")
 
   const { name, email, password, pic,c_mail } = req.body;
   //   ? check for missing fields
@@ -20,6 +20,7 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("Please enter all the required fields");
   }
   //   ? Check if the email is already registered
+  console.log(req.body)
   const userExist = await User.findOne({ email });
   if (userExist) {
     res.status(400);
