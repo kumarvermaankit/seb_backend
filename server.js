@@ -13,7 +13,7 @@ const cors = require("cors");
 dbConnect();
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 // Main routes
 app.use("/api/users", userRoutes);
 app.use("/api/chats", chatRoutes);
