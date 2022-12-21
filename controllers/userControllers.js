@@ -8,6 +8,9 @@ const bcrypt = require("bcrypt");
 // @access		Public
 const registerUser = asyncHandler(async (req, res) => {
 
+  try{
+
+  
 
   const { name, email, password, pic,c_mail } = req.body;
   //   ? check for missing fields
@@ -44,9 +47,14 @@ const registerUser = asyncHandler(async (req, res) => {
     });
     console.log("token")
   } else {
+    console.log("error")
     res.status(500);
     throw new Error("Server could not process the request");
   }
+}catch(err){
+  console.log(err)
+}
+
 });
 
 // @desc		Login existing user
