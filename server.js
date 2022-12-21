@@ -9,7 +9,7 @@ const messageRoutes = require("./routes/messageRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
 const analyzerRoutes = require("./routes/analyzerRoutes");
 const path = require("path");
-
+const cors = require("cors");
 dbConnect();
 const app = express();
 app.use(express.json());
